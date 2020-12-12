@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Our Custom CSS style sheet -->
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+	
+	<link rel="stylesheet" type="text/css" href="styles/magic.min.css">
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+    <script type="text/javascript" src="script.js" ></script>
+    <script type="javascript"src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="fontawesome-free-5.13.1-web/js/all.js"></script>
+	
+	<title>PheonixMarsQuesters</title>
+	</head>
+<body background="images/backgroung.png">
+	<nav class="navbar navbar-expand-sm fixed-top" style=" background-color:rgb(21, 22, 22)" id="myNavbar">
+  		<a class="navbar-brand" href="#" id="logo"><img src="images/logo.png" width="110"></a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
+    		<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    	<ul class="navbar-nav">
+		      	<li class="nav-item dropdown" id="algorithms">
+		        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
+		          	Algorithms
+		        	</a>
+					<div class="dropdown-menu" >
+						<a class="dropdown-item" href="#">A*</a>
+						<a class="dropdown-item" href="#">Dijkstra</a>
+						
+						<a class="dropdown-item" href="#">Greedy Best-First Search</a>
+					    <a class="dropdown-item" href="#">Breadth-First Search (BFS)</a>
+						<a class="dropdown-item" href="#">Depth-First Search (DFS)</a>
+						
+						<a class="dropdown-item" href="#">Jump Point Search</a>
+						<a class="dropdown-item" href="#">Bidirectional BFS</a>
+						<a class="dropdown-item" href="#">Travelling SalesMan</a>
+					</div>
+		      	</li>
+		      	<li class="nav-item dropdown" id="mazes">
+		      		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
+		          	Mazes
+		        	</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					    <a class="dropdown-item" href="#">Random</a>
+					    <a class="dropdown-item" href="#">Recursive Division</a>
+					    <a class="dropdown-item" href="#">Recursive Division (Vertical Skew)</a>
+					    <a class="dropdown-item" href="#">Recursive Division (Horizontal Skew)</a>
+						<a class="dropdown-item" href="#">Simple Spiral</a>
+						<a class="dropdown-item" href="#">High Furniture Density</a>
+						
+					</div>
+				</li>
+		      	<li class="nav-item dropdown" id="speed">
+		      		<a class="nav-link dropdown-toggle speedDisplay" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
+		          	Speed: Fast
+		        	</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					    <a class="dropdown-item" href="#">Slow</a>
+					    <a class="dropdown-item" href="#">Normal</a>
+					    <a class="dropdown-item" href="#">Fast</a>
+					</div>
+				</li>
+				
+				  <button class="btn btn-default btn-space " type="submit" id="startBtn">Start!</button>
+				  <button type="button" class="btn btn-dark btn-space " type="submit" id="clearBtn">Clear Board</button>
+				  <button class="btn btn-default btn-space " type="submit" id="showWater">Show Water</button>
+				  <button id="show_instructions" class="btn btn-default navbar-btn" data-toggle="model" type="button">show Instruction</button>
+				  <button type="button" class="btn btn-outline-success btn-circle btn-lg" data-toggle="modal" data-target="#infoModal" id="infoModalBtn">Info</button>
+				</ul>
+		</div>
+ 	</nav>
+
+ 	<div class="d-flex flex-row flex-wrap m-2 justify-content-around">	
+ 		<div class="d-flex p-2">
+ 			<div class="key wall"></div>  
+ 			<div class="Wall"> Wall</div>
+		 </div> 
+		 <div class="d-flex p-2">
+			<div class="water"><img src="images/Water.png" height="20" alt="water"> Water</div>
+	   </div>
+	   <div class="d-flex p-2">
+		   
+		   <div class="meteor"> <img src="images/meteorite.png" height="30" alt="meteorite">Meteorite</div>
+	   </div>
+		 <div class="d-flex p-2">
+			 <div class="key start"></div>  
+ 			<div class="Srt" >Start</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key end"></div>  
+ 			<div class="tar">Target</div>
+		 </div>
+		 <div class="d-flex p-2">
+ 			<div class="key searching"></div>  
+ 			<div class="key visited"></div>  
+ 			<div class="vis">Visited</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key success"></div>  
+ 			<div class="SP">Shortest-Path</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key unvisited"></div>  
+ 			<div class="unvis">Unvisited</div>
+ 		</div>
+ 	</div>
+
+ 	<div class="d-flex flex-column align-items-center" id="bigTableContainer">
+		<div id="tableContainer"></div>
+		<!-- <div id="update">Click or drag cells to build walls. <br/>Press the 'Start' button when you finish and have selected an algorithm.</div> -->
+ 	</div>
+
+ 	<div class="d-flex flex-row m-4 justify-content-center">
+		
+		<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		      	<div class="container-fluid">
+		        	<h5 class="modal-title">Algorithms</h5>
+		        </div>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="container-fluid">
+		      	This section gives brief summaries for each of the maze solving algorithms listed under the Algorithms tab.
+		      	<br>
+		      	<br>
+		        <div id="accordion">
+				  <div class="card">
+				    <div class="card-header" id="headingOne">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				          Depth-First Search (DFS)
+				        </button>
+				      </h5>
+				    </div>
+
+				    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works: </b> DFS starts at the root node and explores as far as possible along each branch before backtracking.
+				        </p>
+				        <p>
+				        	<b>Analysis: </b> This is a poor algorithm for pathfinding. It is <u>unweighted</u> and does <u>not</u> guarantee the shortest path.
+				        </p>
+				        <p class="fun-fact">
+				        	<i><b>Fun Fact: </b> This algorithm was first investigated in the 19th century by French Mathematician Charles Trémaux.</i>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header" id="headingTwo">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				          Breadth-First Search (BFS)
+				        </button>
+				      </h5>
+				    </div>
+				    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works: </b> BFS starts at the root node and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
+				        </p>
+				        <p>
+				        	<b>Analysis: </b> This is an OK algorithm for pathfinding. It is <u>unweighted</u> but <u>guarantees</u> the shortest path.
+				        </p>
+				        <p class="fun-fact">
+				        	<i><b>Fun Fact: </b> This algorithm was first invented in 1945 by Konrad Zuse and was submitted in his rejected PhD thesis, but was not published until 1972.</i>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header" id="headingThree">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				          Dijkstra
+				        </button>
+				      </h5>
+				    </div>
+				    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works: </b> In Dijkstra's algorithm, all of the nodes in the graph (except the starting node) are initialized with a distance equal to 'infinity.' These distances represents the cost to get from the starting node to the current node, with the starting node having a distance of zero. At the beginning of each iteration, the node with the smallest distance that hasn't been explored yet is visited. These nodes are stored in a min-heap data structure. When a node is visited, all of the neighbors' distances are updated, and if any of the neighbor's distances are lessened, then the algorithm pushes the node onto the min-heap. This continues until the end node has been reached.
+				        </p>
+				        <p>
+				        	<b>Analysis: </b> This is an OK algorithm for pathfinding. This algorithm performs very well in trees with unequal distances between nodes. But since this program only explores horizontally/vertically (with each move costing one), it behaves exactly the same as BFS. It is <u>unweighted</u> but <u>guarantees</u> the shortest path.
+				        </p>
+				        <p class="fun-fact">
+				        	<i><b>Fun Fact: </b> Edsger Dijkstra invented this algorithm in twenty minutes.</i>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="card">
+				    <div class="card-header" id="headingFour">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+				          Greedy Best-First Search
+				        </button>
+				      </h5>
+				    </div>
+				    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works:</b> GBFS tries to expand the node that is closest to the goal, on the grounds that this is likely to lead to a solution quickly. It evaluates nodes on a heuristic function, which in myPath is the Euclidean distance from the current node to the end node. 
+				        </p>
+				        <p>
+				        	<b>Analysis: </b>This is a poor algorithm for pathfinding. It is <u>weighted</u> but does <u>not</u> guarantee the shortest path. 
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="card">
+				    <div class="card-header" id="headingFive">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+				          A*
+				        </button>
+				      </h5>
+				    </div>
+				    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works: </b> A* uses the same min-heap data structure that is implimented in Dijkstra's, but it expands upon Dijkstra's criteria for selecting the next node to explore. Dijkstra's chooses the node with the smallest distance from the starting node to be explored next. However, A* ranks nodes differently: it has a heuristic function that evaluates how far a node has traveled from the starting node <u>and</u> how far it is from the end node. This heuristic function makes the algorithm 'smart' since it is able to expand in a direction of interest. My implimentation of A* uses Euclidean distance for the end node distance calculation.
+				        </p>
+				        <p>
+				        	<b>Analysis: </b> This is the one of the best algorithms for pathfinding. It is <u>weighted</u> and it <u>guarantees</u> the shortest path.
+				        </p>
+				        <p class="fun-fact">
+				        	<i><b>Fun Fact: </b> A* was first created for the 'Shakey Project', which had the aim of building a mobile robot that could plan its own actions. It was later published in 1968 by Stanford Research Institute scientists.</i>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="card">
+				    <div class="card-header" id="headingSix">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+				          Travelling Salesman
+				        </button>
+				      </h5>
+				    </div>
+				    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works: </b> It gives shortest possible route that visits every city/Node exactly once Given a set of Nodes and distance between every pair of Node
+				        </p>
+				        <p>
+				        	<b>Analysis: </b> This is a good algorithm for pathfinding if there are more than one ending node. It is <u>weighted</u> and it <u>guarantees</u> the shortest path.
+				        </p>
+				        
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="card">
+				    <div class="card-header" id="headingSeven">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+				          Jump Point Search
+				        </button>
+				      </h5>
+				    </div>
+				    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+				      <div class="card-body">
+				        <p>
+				        	<b>How It Works: </b> Jump Point Search is an optimization of A* for uniform cost grids. It reduces symmertries in the search procedure by graph pruning, which eliminates certain nodes to explore based on the assumptions that can be made about the current node's neighbors (as long as certain conditions are satisfied). My implimentation only considers straight horizontal and vertical 'jumps.' In the original JPS paper, it also considers diagonal jumps, but since my program only moves horizontally and vertically, I decided to not impliment diagonal jumps. This made the algorithm non-optimal, sometimes resulting in the algorithm not being able to find the end node. Despite this, I decided to leave this algorithm in myPath to demonstrate the different types of algorithms out there. 
+				        </p>
+				        <p>
+				        	<b>Analysis: </b> This is a great algorithm for pathfinding when there is an explicit maze drawn. It is <u>weighted</u>, but it does <u>not</u> guarantee the shortest path.
+				        </p>
+				        <p class="fun-fact">
+				        	<i><b>Fun Fact: </b> JPS was first published in 2011, which is more than 40 years after A* was first published.</i>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		      </div>
+		  	  </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<div id="tutorial">
+		
+		
+		
+		<!-- <div id="tutorialCounter">1/9</div>
+		<img id="mainTutorialImage" src="public/styling/c_icon.png"> -->
+		<h3>Welcome to PHEONIX MARS QUESTER!</h3>
+		<img src="images/logo.png" width="320" alt="logo" class="center" >
+		<h6>This short tutorial will walk you through all of the features of this application. If you want to dive right in, feel free to press the "Skip Tutorial" button below.</h6>
+
+		
+		<h6>INSTRUCTIONS</h6>
+		<p>Choose any algorithm<br>Click on start button to get the path between start node and end node<br>Click on clear board button to clear the board</p>
+		<!-- <h6>ALGORITHMS</h6>
+		<P>You can choose any algorithm and our mars rover will locate a path between start and end node with the help of that algorithm</P> -->
+		<h6>WATER</h6>
+		<p>If water is present on the land of mars between start and end node the rover will locate the water and provide its information at the end cell.Once you diplace the water outside the start and end node it will be removed from the grid. </p>
+		<!-- <h6>MAZES</h6>
+		<p> Select any maze to make the path interestiong by clicking on maze button and choosing any one of the options.</p> -->
+		<h6>METEORITE AND WALLS  </h6>
+		<P>Drag the cursor to create the walls which are impenetrable, meaning that a path cannot cross through them. Select high meteorite hit region maze to create Meteorites which are however, are not impassable. They are simply more dangerous to move through . In this application, moving through a meteorite has a "cost" of 4. </P>
+		<button id="skipButton" class="btn btn-default navbar-btn" data-toggle="model" type="button">Skip Tutorial</button>
+	  </div>
+
+	<div class ="d-flex flex-column" id="results">
+		<div class="d-flex justify-content-center"> 
+			<i id="resultsIcon" class="fas fa-exclamation"></i>
+		</div>
+		<div id="duration" > 
+	 		Please select an algorithm and press start.
+	 	</div>
+	 	<div id="length" class="d-flex justify-content-center"> 	
+	 	</div>	 	
+	</div>
+	<div id="draw_area"></div>
+
+    <div id="instructions_panel" class="panel">
+      <header>
+        <h2 class="header_title">Instructions</h2>
+		<button id="hide_instructions" class="btn btn-default navbar-btn" data-toggle="model" type="button">hide</button>
+		
+	  </header>
+	 
+     You can only select the following algorithms in these cases:- <br>
+    1. WATER - Dijkstra, A*, Greedy BFS , BFS . <br>
+	 2.HIGH METEORITE HIT REGION - Dijkstra , A* , Greedy BFS. <br>
+ 
+	 <br>If you will drag the start node or end nodes through the walls and weight , they will disappear. <br>
+     <br>Mazes and Walls does not work for travelling salesman algorithm and visa versa. To remove the extra end points please select another algorithm    <br>
+     Click on the grid cell anywhere to clear the path.
+    </div>
+     
+ 
+
+	<script src="bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/panel.js"></script>
+	<script type="text/png" src="images/Water.png"></script>
+	<script type="text/javascript" src="scripts/GridAndNavBar.js"></script>
+	<script type="text/javascript" src="scripts/MouseOperations.js"></script>
+	<script type="text/javascript" src="scripts/AlgoAndMazeUtilities.js"></script>
+	<script type="text/javascript" src="scripts/Algorithms.js"></script>
+	<script type="text/javascript" src="scripts/DataStructure.js"></script>
+	<script type="text/javascript" src="scripts/TravellingSalesMan.js"></script>
+	<script type="text/javascript" src="scripts/Mazes.js"></script>
+	
+</body>
+</html>
