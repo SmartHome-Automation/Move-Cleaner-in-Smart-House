@@ -148,22 +148,23 @@ ul {
 }
 
 #results {
-	height: 77px;
-	width: 120px;
+	text-align: center;
 	background-color: #fcbd02;
 	position: fixed;
 	right: 10px;
 	bottom: 10px;
-	color: white;
-	font-size: 12px;
-	text-align: center;
-	border: 1px dashed black;
+	color: rgb(0, 0, 0);
+	font-size: 20px;
+	border: 5px solid rgba(26, 26, 26, 0.212);
+	border-radius: 10px;
 }
 
 #resultsIcon {
 	margin-bottom: 3px;
 	margin-top: 7px;
 	font-size: 16px;
+	content: url("../images/result.png");
+	height: 40px;
 }
 
 #duration, #length {
