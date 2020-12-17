@@ -348,7 +348,19 @@
      <br>Mazes and Walls do not work for travelling salesman algorithm and visa versa. To remove the extra end points, please select another algorithm.<br>
      Click on the grid cell anywhere to clear the path.
     </div>
-     
+	 
+	<div>
+		<h1 style="color: chartreuse; margin-left: 22%; padding: 0%;"><u>Video Tutorial</u></h1>
+		<video width="50%" style="margin-left: 20%;" controls poster="./images/logo2.png">
+			<source src="./images/tutorialVideo.mp4" type="video/mp4"></source>
+		</video>
+		
+		<audio controls autoplay width="20%"> 
+			<source src="./images/track 1.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</audio>
+  
+	</div>
  
 
 	<script src="bootstrap/js/jquery-3.5.1.slim.min.js"></script>
@@ -363,6 +375,11 @@
 	<script type="text/javascript" src="scripts/DataStructure.js"></script>
 	<script type="text/javascript" src="scripts/TravellingSalesMan.js"></script>
 	<script type="text/javascript" src="scripts/Mazes.js"></script>
-	
+	<script>
+		myAudio = document.getElementById("audio1");
+		function setHalfVolume() { 
+			myAudio.volume = 0.4;
+		}
+	</script>
 </body>
 </html>
