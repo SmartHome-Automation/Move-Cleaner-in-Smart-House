@@ -207,15 +207,14 @@ ul {
   }
   
   #tutorial {
-	position:absolute;
+	position: absolute;
 	z-index: 3;
 	background-color: white;
-	width: 81%;
-	height: 84%;
-	
-	
-	border: 2px solid rgb(36, 41, 41);
-	border-radius: 4px;
+	width: 90%;
+	height: 85%;
+
+	border: 5px solid rgb(36, 41, 41);
+	border-radius: 15px;
 	color:rgb(104, 81, 81);
 	text-align: left;
 	float: right;
