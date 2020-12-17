@@ -68,7 +68,7 @@
 		      	<li class="nav-item dropdown" id="speed">
 		      		<a class="nav-link dropdown-toggle speedDisplay" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
 		          	Speed: Fast
-		        	</a>
+		        	</a>	
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					    <a class="dropdown-item" href="#">Slow</a>
 					    <a class="dropdown-item" href="#">Normal</a>
@@ -310,21 +310,19 @@
 	</div>
 
 	<div id="tutorial">
-		<!-- <div id="tutorialCounter">1/9</div>
-		<img id="mainTutorialImage" src="public/styling/c_icon.png"> -->
 		<h3>Move Cleaner in Smart Home!</h3>
 		<img src="images/favicon2.png" width="100px" alt="logo" class="center" >
-		<h6>This short tutorial will walk you through all of the features of this application. If you want to dive right in, feel free to press the "Skip Tutorial" button below.</h6>
-
-		
+		<div style="height:50%; padding:20px; overflow-y: scroll;">
+			<h6>This short tutorial will walk you through all of the features of this application. If you want to dive right in, feel free to press the "Skip Tutorial" button below.</h6>		
 		<h6>INSTRUCTIONS</h6>
 		<p>Choose any algorithm.<br>Click on start button to get the path between start node and end node.<br>Click on clear board button to clear the board.</p>
-		<!-- <h6>ALGORITHMS</h6>
-		<P>You can choose any algorithm and our mars rover will locate a path between start and end node with the help of that algorithm</P> -->
+		<h6>ALGORITHMS</h6>
+		<p>You can choose any algorithm and our mars rover will locate a path between start and end node with the help of that algorithm</p>
 		<h6>WATER</h6>
 		<p>The cleaner will locate the water tank and fetch it while cleaning at the end cell. Once you displace the water outside the start and end node it will be removed from the grid. </p>
 		<p>Drag the cursor to create the walls which are impenetrable, meaning that a path cannot cross through them. Select high meteorite hit region maze to create Meteorites which are however, are not impassable. They are simply more dangerous to move through . In this application, moving through a meteorite has a "cost" of 4. </p>
 		<button id="skipButton" class="btn btn-default navbar-btn" data-toggle="model" type="button">Skip Tutorial</button>
+		</div>
 	  </div>
 
 	<div class ="d-flex flex-column" id="results">
