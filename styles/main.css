@@ -205,17 +205,16 @@ ul {
 .submenu-item:hover > .dropdown-menu {
 	display: block;
   }
-  
-  #tutorial {
+
+#tutorial {
 	position: absolute;
 	z-index: 3;
 	background-color: white;
 	width: 90%;
 	height: 85%;
-
 	border: 5px solid rgb(36, 41, 41);
 	border-radius: 15px;
-	color:rgb(104, 81, 81);
+	color:rgb(0, 0, 0);
 	text-align: left;
 	float: right;
 	margin-left: auto;
@@ -226,7 +225,7 @@ ul {
 	top: 1;
 	left: 0;
 	right: 0;
-  }
+}
   .center{
 	  display: block;
 	  margin-left: auto;
