@@ -1,4 +1,4 @@
-# PHEONIX MARS QUESTERS (Mars Colonization Project)
+# Move-Cleaner-in-Smart-House
 
 Our project is a shortest path finding  web Application based on the theme "MARS COLONIZATION".
 This project was build to establish a permanent human settlement on Mars.
