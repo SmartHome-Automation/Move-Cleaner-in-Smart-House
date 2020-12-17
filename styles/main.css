@@ -126,8 +126,7 @@ ul {
 }
 
 .start {
-	background-color: green;
-	border-color:white;
+	content:url("../images/robo.png");
 }
 
 .end {
