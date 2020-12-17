@@ -16,7 +16,12 @@
     <script type="text/javascript" src="script.js" ></script>
     <script type="javascript"src="bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="fontawesome-free-5.13.1-web/js/all.js"></script>
-	
+	<script>
+		var myAudio = document.getElementById("audio1");
+		function setHalfVolume() { 
+			myAudio.volume = 0.001;
+		}
+	</script>
 	<title>Move Cleaner in Smart Home</title>
 	</head>
 <body background="images/backgroung.png">
@@ -350,14 +355,10 @@
     </div>
 	 
 	<div>
-		<h1 style="color: chartreuse; margin-left: 22%; padding: 0%;"><u>Video Tutorial</u></h1>
-		<video width="50%" style="margin-left: 20%;" controls poster="./images/logo2.png">
-			<source src="./images/tutorialVideo.mp4" type="video/mp4"></source>
-		</video>
-		
-		<audio controls autoplay width="20%"> 
+		<h1 style="color: chartreuse; margin-left: 22%;"><u>Video Tutorial</u></h1>
+		<iframe style="margin-left: 20%;" controls poster="./images/logo2.png" width="560" height="315" src="https://www.youtube.com/embed/UmhvKYtdIv4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<audio  id= "audio1" controls onloadeddata="setHalfVolume()" autoplay> 
 			<source src="./images/track 1.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
 		</audio>
   
 	</div>
@@ -375,11 +376,5 @@
 	<script type="text/javascript" src="scripts/DataStructure.js"></script>
 	<script type="text/javascript" src="scripts/TravellingSalesMan.js"></script>
 	<script type="text/javascript" src="scripts/Mazes.js"></script>
-	<script>
-		myAudio = document.getElementById("audio1");
-		function setHalfVolume() { 
-			myAudio.volume = 0.4;
-		}
-	</script>
 </body>
 </html>
