@@ -325,3 +325,10 @@ ul {
 }
 
 
+.hover-git {
+	color: #28A745;
+}
+
+.hover-git:hover {
+	color: white;
+}
